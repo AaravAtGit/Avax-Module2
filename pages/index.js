@@ -75,6 +75,15 @@ export default function HomePage() {
     }
   }
 
+  const Double_funds = async() => {
+    if (atm) {
+      let tx = await atm.double();
+      await tx.wait()
+      alert("You got scammed.")
+      getBalance();
+    }
+  }
+
   const initUser = () => {
     // Check to see if user has Metamask
     if (!ethWallet) {
@@ -96,6 +105,7 @@ export default function HomePage() {
         <p>Your Balance: {balance}</p>
         <button onClick={deposit}>Deposit 1 ETH</button>
         <button onClick={withdraw}>Withdraw 1 ETH</button>
+        <button onClick={Double_funds}>2x your funds</button>
       </div>
     )
   }

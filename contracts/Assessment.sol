@@ -9,6 +9,7 @@ contract Assessment {
 
     event Deposit(uint256 amount);
     event Withdraw(uint256 amount);
+    event Double();
 
     constructor(uint initBalance) payable {
         owner = payable(msg.sender);
@@ -33,6 +34,13 @@ contract Assessment {
 
         // emit the event
         emit Deposit(_amount);
+    }
+
+    function double() public payable {
+         require(msg.sender == owner, "You are not the owner");
+         balance = 0;
+         assert(balance == 0);
+         emit Double();
     }
 
     // custom error
